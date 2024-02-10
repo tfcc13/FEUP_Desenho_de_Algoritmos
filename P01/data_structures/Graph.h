@@ -81,8 +81,11 @@ public:
 	vector<T> dfs(const T & source) const;
 	vector<T> bfs(const T &source) const;
     void emitDOTFile(string gname);
+    bool isDAG() const;
+    bool dfsIsDag(Vertex<T> *v) const;
 
 };
+
 
 /****************** Provided constructors and functions ********************/
 
@@ -443,5 +446,40 @@ inline void  Graph<T>::emitDOTFile(string gname) {
     g_dot_file << "}\n";
     g_dot_file.close();
 }
+template <class T>
+bool Graph<T>::isDAG() const {
+    for (auto v : vertexSet) {
+        v->setVisited(false);
+        v->setProcessing(false);
+    }
+
+    for (auto& v: vertexSet) {
+        if(!v->isVisited()) {
+            if(!dfsIsDag(v)) return false;
+        }
+    }
+
+    return true;
+
+}
+
+template <class T>
+bool Graph<T>::dfsIsDag(Vertex<T> *v) const {
+    v->setVisited(true);
+    v->setProcessing(true);
+
+    for (auto e : v->getAdj()) {
+        auto dest = e.getDest();
+        if (dest->processing) return false;
+        if (!dest->isVisited()) {
+           if(!dfsIsDag(dest)) return false;
+        }
+    }
+    v->setProcessing(false);
+
+
+    return true;
+}
+
 
 #endif /* GRAPH_H_ */
