@@ -6,13 +6,59 @@ using namespace std;
 template <typename T>
 void aux_reverseGraphEdges(Graph<T>* g) {
     // TODO
+
+    for (auto v : g->getVertexSet()) {
+        for(auto e : v->getAdj()) {
+            auto dest = e.getDest();
+            g->removeEdge(v->getInfo(),dest->getInfo());
+            g->addEdge(dest->getInfo(), v->getInfo(),0);
+        }
+    }
+
 }
 
 // Kosaraju-Sharir algorithm to find strongly connected components
 template <typename T>
 vector<vector<T>> SCCkosaraju(Graph<T>* g)  {
     vector<vector<T>> sccs;
+    stack<Vertex<T>*> vertexStack;
     //TODO
+
+    for(auto v : g->getVertexSet()) {
+        v->setVisited(false);
+    }
+
+    for( auto v : g->getVertexSet()) {
+        if(!v->isVisited()) {
+            firstDFSKosarajuSharir(v, &vertexStack);
+        }
+    }
+    for(auto v : g->getVertexSet()) {
+        v->setVisited(false);
+    }
+
+    aux_reverseGraphEdges(g);
+
+    for(auto v : g->getVertexSet()) {
+        v->setVisited(false);
+    }
+
+
+
+    while(!vertexStack.empty()) {
+
+        auto curr = vertexStack.top();
+        vertexStack.pop();
+        vector<int> res;
+        if(!curr->isVisited()) {
+            secondDFSKosarajuSharir(curr, res);
+            sccs.push_back(res);
+        }
+
+    }
+
+
+
     return sccs;
 }
 
@@ -20,10 +66,33 @@ vector<vector<T>> SCCkosaraju(Graph<T>* g)  {
 template <typename T>
 void firstDFSKosarajuSharir(Vertex<T> *v, stack<Vertex <T> *> *vertexStack)  {
     // TODO
+
+    v->setVisited(true);
+
+    for(auto e : v->getAdj()) {
+        auto dest = e.getDest();
+        if(!dest->isVisited()) {
+            firstDFSKosarajuSharir(dest, vertexStack);
+        }
+    }
+
+    vertexStack->push(v);
+
 }
 
 // Second depth-first search in Kosaraju-Sharir algorithm
 template <typename T>
 void secondDFSKosarajuSharir(Vertex<T> *v, std::vector<int> & res)  {
     // TODO
+    v->setVisited(true);
+    res.push_back(v->getInfo());
+    for(auto e : v->getAdj()) {
+        auto dest = e.getDest();
+        if(!dest->isVisited()) {
+            secondDFSKosarajuSharir(dest,res);
+        }
+    }
+
+
+
 }
