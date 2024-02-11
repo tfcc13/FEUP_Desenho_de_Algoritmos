@@ -6,13 +6,17 @@ using namespace std;
 template <typename T>
 void aux_reverseGraphEdges(Graph<T>* g) {
     // TODO
-
-    for (auto v : g->getVertexSet()) {
-        for(auto e : v->getAdj()) {
+    std::vector<std::pair<T, T>> edgesToReverse;
+    for (auto& v : g->getVertexSet()) {
+        for(auto& e : v->getAdj()) {
             auto dest = e.getDest();
-            g->removeEdge(v->getInfo(),dest->getInfo());
-            g->addEdge(dest->getInfo(), v->getInfo(),0);
+            edgesToReverse.push_back({v->getInfo(), dest->getInfo()});
         }
+    }
+
+    for (const auto& edge : edgesToReverse) {
+        g->removeEdge(edge.first, edge.second);
+        g->addEdge(edge.second, edge.first, 0);
     }
 
 }
@@ -49,8 +53,8 @@ vector<vector<T>> SCCkosaraju(Graph<T>* g)  {
 
         auto curr = vertexStack.top();
         vertexStack.pop();
-        vector<int> res;
         if(!curr->isVisited()) {
+            vector<int> res;
             secondDFSKosarajuSharir(curr, res);
             sccs.push_back(res);
         }
