@@ -77,6 +77,14 @@ TEST(TP1_Ex3, test_SCC_kosaraju) {
 
     vector<vector<int>> sccs =SCCkosaraju(& graph);
 
+    for(auto a : sccs) {
+        cout << '['
+        for (auto b : a) {
+            cout << b;
+        }
+        cout << ']';
+    }
+
     EXPECT_EQ(sccs.size(), 4);
 
 }
