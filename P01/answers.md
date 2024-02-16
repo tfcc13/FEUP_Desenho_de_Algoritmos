@@ -28,3 +28,9 @@ Seguindo o algoritmo e de forma correta
 
 Um vértice em que não existe edges de saída, ou tem uma edge que se destina a ele mesmo, forma um strong connected component composto por si mesmo.
 
+#### Notas:
+
+**Tree Edge** -  Edge regular de nó pai para o descendente direto.  
+**Forward Edge** - Edge de um nó ancestral para um nó descendente não direto.  
+**BackWard Edge** - Edge de nó que volta para um nó ancestral.  
+**Cross Edge** - Edge que vai de um nó de um ramo para outro nó de outro ramo.
