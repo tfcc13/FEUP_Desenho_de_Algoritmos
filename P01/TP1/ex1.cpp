@@ -17,13 +17,16 @@ vector<T> topsort(const Graph<T>* g) {
     //TODO
     if(!g->isDAG()) return res;
 
+    //Fila de vértices a serem visitados
     queue<Vertex<T>*> q;
 
+    //inicializa as variáveis usadas a falso e a 0
     for (auto vertex : g->getVertexSet()) {
         vertex->setVisited(false);
         vertex->setIndegree(0);
     }
 
+    //conta as edges de entrada dos vértices
     for (auto v : g->getVertexSet()) {
         for(auto e : v->getAdj()) {
             auto dest = e.getDest();
@@ -31,12 +34,18 @@ vector<T> topsort(const Graph<T>* g) {
         }
     }
 
+    // Insere na fila os vértices que não têm incoming edges
+    // como o grafo é acíclico haverá sempre um vértice sem edges
     for(auto v: g->getVertexSet()) {
         if(v->getIndegree() == 0) {
             q.push(v);
         }
     }
 
+    /*
+     * Percorre a fila de vértices e à medida que os processa decrementa o indegree e retira o vértice processado da fila
+     * quando um indegree se torna igual a zero adiciona-o à fila, pois é o próximo level
+     */
     while(!q.empty()) {
         auto curr = q.front();
         q.pop();
