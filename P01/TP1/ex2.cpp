@@ -14,11 +14,13 @@ template <typename T>
 bool isDAG(const Graph<T>* g)  {
     //TODO
 
+    //inicializa as variáveis usadas a falso e a 0
     for (auto v : g->getVertexSet()) {
         v->setVisited(false);
         v->setProcessing(false);
     }
 
+    // chama recursivamente a função de análise dos vértices
     for (auto v: g->getVertexSet()) {
         if(!v->isVisited()) {
             if(!dfsIsDAG(v)) return false;
@@ -35,9 +37,17 @@ bool isDAG(const Graph<T>* g)  {
 template<class T>
 bool dfsIsDAG(Vertex<T> *v)  {
     //TODO
+    // marca como visitado
     v->setVisited(true);
+    //Marca como em processamento
     v->setProcessing(true);
 
+    /*
+     * Processa os destinos dos vértices
+     * se o vértice está marcado como estando a ser processado, indica que existe um ciclo
+     * se não está a ser processado verifica se foi visitado
+     * se não foi visitado chama a função recursivamente
+     */
     for (auto e : v->getAdj()) {
         auto dest = e.getDest();
         if (dest->isProcessing()) return false;
@@ -45,6 +55,8 @@ bool dfsIsDAG(Vertex<T> *v)  {
             if(!dfsIsDAG(dest)) return false;
         }
     }
+
+    //Ao terminar a análise do vértice, marca-se como não estando a ser processado
     v->setProcessing(false);
 
 
