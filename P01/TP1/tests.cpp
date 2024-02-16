@@ -78,7 +78,7 @@ TEST(TP1_Ex3, test_SCC_kosaraju) {
     vector<vector<int>> sccs =SCCkosaraju(& graph);
 
     for(auto a : sccs) {
-        cout << '['
+        cout << '[';
         for (auto b : a) {
             cout << b;
         }

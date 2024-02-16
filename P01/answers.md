@@ -24,5 +24,7 @@ Seguindo o algoritmo e de forma correta
 
 ### a) Strong Connected Components
 
-[1,2,0],[4,5,6]
+[1,2,0],[3], [7], [4,5,6]
+
+Um vértice em que não existe edges de saída, ou tem uma edge que se destina a ele mesmo, forma um strong connected component composto por si mesmo.
 
