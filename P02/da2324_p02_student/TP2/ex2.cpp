@@ -1,5 +1,7 @@
 // By: Gonçalo Leão
 
+//algoritmo com complexidade n*2^n, itera sobre todos os candidatos possiveis as combinações existente
+
 bool subsetSum(unsigned int A[], unsigned int n, unsigned int T, unsigned int subset[], unsigned int &subsetSize) {
 
     // variável da soma
