@@ -1,9 +1,38 @@
 // By: Gonçalo Leão
 // With contributions by Eduardo Almeida
 
+#include <climits>
+
+// Tem uma complexidade n^3
 int maxSubsequence(int A[], unsigned int n, unsigned int &i, unsigned int &j) {
-    // TODO
-    return 0;
+
+    int maxSum = INT_MIN;
+    int sum;
+    bool firstSum = true;
+    for (int a = 0; a < n; a++ ) {
+        for(int b = a; b < n; b++) {
+            sum = 0;
+
+            for (int c = a; c <= b; c++) {
+                sum += A[c];
+            }
+
+            if(firstSum) {
+                firstSum = false;
+                maxSum = sum;
+                i = a;
+                j = b;
+            }
+            else if (sum > maxSum) {
+                maxSum = sum;
+                i = a;
+                j = b;
+            }
+        }
+
+    }
+
+    return maxSum;
 }
 
 /// TESTS ///
