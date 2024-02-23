@@ -1,7 +1,32 @@
 // By: Gonçalo Leão
 
+#include <climits>
+
 unsigned int integerKnapsack(unsigned int values[], unsigned int weights[], unsigned int n, unsigned int maxWeight, bool usedItems[]) {
     // TODO
+
+    bool curCand[n];
+    int sum;
+    int sumWeight;
+    bool foundSol = false;
+    int maxSum = INT_MIN;
+    for (int i = 0; i < n; i++) {
+        curCand[i] = false;
+    }
+
+    while(true) {
+        sum = 0;
+        sumWeight;
+        for(int i = 0; i < n; i++) {
+            sum = sum + values[i]*curCand[i];
+            sumWeight += weights[i]*curCand[i];
+            if(sumWeight <= maxWeight) {
+                if(!foundSol || sum > maxSum)
+
+            }
+        }
+    }
+
     return 0;
 }
 
