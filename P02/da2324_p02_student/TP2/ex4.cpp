@@ -3,9 +3,49 @@
 #include <algorithm>
 #include <vector>
 
+using namespace std;
+
+struct Item {
+    unsigned int v;
+    unsigned int w;
+    double r;
+
+};
+
 double fractionalKnapsack(unsigned int values[], unsigned int weights[], unsigned int n, unsigned int maxWeight, double usedItems[]) {
-    // TODO
-    return 0.0;
+
+    vector<Item> allItems;
+
+    for (int i = 0; i < n; i++) {
+        Item currItem = {values[i],weights[i],(double)values[i]/weights[i]};
+        allItems.push_back(currItem);
+    }
+
+    std::sort(allItems.begin(), allItems.end(), [](const Item& item1, const Item& item2) {
+        return item1.r>item2.r;
+    });
+
+
+    double weight = 0;
+    double value = 0;
+    unsigned int currItem = 0;
+
+    while(weight < maxWeight) {
+        if(weight+allItems[currItem].w <= maxWeight) {
+            usedItems[currItem] = 1;
+            weight = weight + allItems[currItem].w;
+            value = value + allItems[currItem].v;
+        }
+
+        else {
+            usedItems[currItem] = (maxWeight-weight) / allItems[currItem].w;
+            value = value + usedItems[currItem]*allItems[currItem].v;
+            weight = maxWeight;
+        }
+        currItem++;
+    }
+
+    return value;
 }
 
 /// TESTS ///
