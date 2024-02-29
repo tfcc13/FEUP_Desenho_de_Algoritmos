@@ -14,20 +14,52 @@ unsigned int integerKnapsack(unsigned int values[], unsigned int weights[], unsi
         curCand[i] = false;
     }
 
-    while(true) {
+    while (true) {
         sum = 0;
-        sumWeight;
-        for(int i = 0; i < n; i++) {
-            sum = sum + values[i]*curCand[i];
-            sumWeight += weights[i]*curCand[i];
-            if(sumWeight <= maxWeight) {
-                if(!foundSol || sum > maxSum)
-
-            }
+        sumWeight = 0;
+        for (int i = 0; i < n; i++) {
+            sum = sum + values[i] * curCand[i];
+            sumWeight += weights[i] * curCand[i];
         }
+
+        if (sumWeight <= maxWeight) {
+            if (!foundSol || sum > maxSum) {
+                maxSum = sum;
+
+                for (unsigned int k = 0; k < n; k++) {
+                    usedItems[k] = curCand[k];
+                }
+///PORQUE È QUE PONDO FOUNDSOL RESULTA ?
+                foundSol = true;
+            }
+
+        }
+
+        int curIndex = 0;
+
+        while (curCand[curIndex]) {
+            curIndex = curIndex + 1;
+            if (curIndex == n) {
+                break;
+            }
+
+        }
+
+        if (curIndex == n) {
+            break;
+        }
+
+        for (int k = 0; k < curIndex; k++) {
+            curCand[k] = false;
+        }
+
+        curCand[curIndex] = true;
+
+
     }
 
-    return 0;
+
+    return maxSum;
 }
 
 /// TESTS ///
