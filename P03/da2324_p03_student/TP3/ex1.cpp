@@ -6,7 +6,63 @@
 template <class T>
 void edmondsKarp(Graph<T> *g, int source, int target) {
     // TODO
+
+    //inicialmente coloca-se as aresta com o flow a  0
+    // a cada passa usar uma bfs para encontrar o menor caminho de s até t
+    // verifico quais as capacidades minimaas das arestas
+    // introduz-se esse fluxo minimo no grafo, um fluxo residual
+    // ao enviar esse fluxo minimo, significa que se pode receber os fluxos enviados ,
+    // atualiza-se aresta com a capacidade restante.
+    //soma-se os fluxos introduzidos
+    // Vê-se quais caminhos se pode tomar  a seguir
+    // Quando não existe mais caminhos possíveis atingiu-se o fluxo máximo
+
+
+    auto s = g->findVertex(source);
+    auto t = g->findVertex(target);
+
+    if(!s || !t || s == t) {
+        return ;
+    }
+
+    for(auto v : g->getVertexSet()) {
+        for(auto e : v->getAdj()) {
+            e->setFlow(0);
+        }
+    }
+
+
+    while(findAugmentingPath(s,t)) {
+       auto f = findMinResidualAlongPath(s,t);
+        amountFlowAlongPath(s,t,f);
+    }
+    return;
+
 }
+
+/* pseudo cósigo
+int findAugmentingPath(int s, int t) {
+    for (v in VertexSet)
+        v->setVisitedFalse
+    s-> setVisited(true)
+    q.queue()
+    q.push(s)
+}
+
+ while(!q.empty()&& !t->isVisited()
+ {
+  v <- q.front,q.pop();
+
+  for(e in v->getAdj() {
+    if(!e->getDest()->isVisited() && e->getWight() - e->getFlow() > 0) {
+    e->getDest() ->setVisited(True)
+    e->getPath();
+    q.push(e->getest());
+    }
+    }
+    return
+    }
+ */
 
 /// TESTS ///
 #include <gtest/gtest.h>

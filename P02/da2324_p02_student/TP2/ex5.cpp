@@ -84,9 +84,7 @@ bool changeMakingGR(unsigned int C[], unsigned int Stock[], unsigned int n, unsi
 
 
 
-    while(totalVal < T) {
 
-    }
 
 
     return true;
