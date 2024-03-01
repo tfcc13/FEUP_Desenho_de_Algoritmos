@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P02/da2324_p02_student/lib/googletest
+# Install script for directory: C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P02/da2324_p02_student/lib/googletest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,12 +34,12 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Users/tiago/AppData/Local/Programs/CLion/bin/mingw/bin/objdump.exe")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P02/da2324_p02_student/cmake-build-debug/lib/googletest/googlemock/cmake_install.cmake")
+  include("C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P02/da2324_p02_student/cmake-build-debug/lib/googletest/googlemock/cmake_install.cmake")
 
 endif()
 

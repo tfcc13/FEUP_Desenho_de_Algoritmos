@@ -1,7 +1,9 @@
 // By: Gonçalo Leão
 
 #include <climits>
+#include <vector>
 
+using namespace std;
 bool changeMakingBF(unsigned int C[], unsigned int Stock[], unsigned int n, unsigned int T, unsigned int usedCoins[]) {
     // TODO
 
@@ -76,18 +78,22 @@ bool changeMakingBF(unsigned int C[], unsigned int Stock[], unsigned int n, unsi
 
 bool changeMakingGR(unsigned int C[], unsigned int Stock[], unsigned int n, unsigned int T, unsigned int usedCoins[]) {
 
-    unsigned int totalVal = 0;
-    unsigned int minCoins = INT_MAX;
-    unsigned int currItem = n-1;
+for (unsigned int i = 0; i < n; i++ ) {
+    usedCoins[i] = 0;
+}
 
-    unsigned int currCand[50];
+unsigned int currTotal;
+for (int i = n-1; i >= 0; i--) {
+    currTotal =  min(T/C[i], Stock[i]);
+    usedCoins[i] =currTotal;
+    T -=  currTotal*C[i];
+}
 
-
-
-
-
-
+if (T == 0) {
     return true;
+}
+
+    return  false;
 }
 
 /// TESTS ///
