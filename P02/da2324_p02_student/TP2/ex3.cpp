@@ -23,13 +23,13 @@ unsigned int integerKnapsack(unsigned int values[], unsigned int weights[], unsi
         }
 
         if (sumWeight <= maxWeight) {
-            if (!foundSol || sum > maxSum) {
+            if (sum >= maxSum || !foundSol ) {
                 maxSum = sum;
 
                 for (unsigned int k = 0; k < n; k++) {
                     usedItems[k] = curCand[k];
                 }
-///PORQUE È QUE PONDO FOUNDSOL RESULTA ?
+///PORQUE È QUE PONDO FOUNDSOL RESULTA ? Deve ser do compilador
                 foundSol = true;
             }
 

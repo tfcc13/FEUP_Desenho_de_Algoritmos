@@ -1,12 +1,94 @@
 // By: Gonçalo Leão
 
+#include <climits>
+
 bool changeMakingBF(unsigned int C[], unsigned int Stock[], unsigned int n, unsigned int T, unsigned int usedCoins[]) {
     // TODO
-    return true;
+
+    unsigned int currCand[50];
+
+    for (unsigned int i = 0; i < n; i++) {
+        currCand[i] = 0;
+    }
+
+    bool foundSol = false;
+    unsigned int minCoins = INT_MAX;
+    unsigned int currIndex;
+
+    while (true) {
+        //variáveis de controlo
+        unsigned int totalVal = 0;
+        unsigned int totalCoins = 0;
+
+        //vê quais os candidatos de moedas atuais e calcula a soma do seu valor e o número total de moedas usadas
+        for (int k = 0; k <n; k++) {
+            totalVal += C[k] * currCand[k];
+            totalCoins += currCand[k];
+        }
+
+        // o algoritmo só é possível porque tudo é inicializado a zero, e só posteriormente é que se atualiza os candidatos de acordo com o stock de moedas
+        //Se o valor somado anteriormente for igual ao valor de T atualiza-se o minimo de moedas usadas para a soma feita no ciclo anterior
+        if(totalVal == T) {
+            //foundsol usado para ver se estamos no primeiro candidato
+            if(!foundSol || totalCoins < minCoins) {
+                minCoins = totalCoins;
+                foundSol = true;
+                //atualiza-se  a array das moedas usadas
+                for(int k=0; k<n;k++) {
+                    usedCoins[k] = currCand[k];
+                }
+            }
+        }
+
+        // coloca o currIndex a 0;
+        currIndex = 0;
+
+        //coloca os candidatos igual ao stock atual
+        while (currCand[currIndex] == Stock[currIndex]) {
+            currIndex++;
+            //para se se ultrapassar o máximo de moedas existentes
+            if(currIndex == n) {
+                break;
+            }
+        }
+
+        //para-se o ciclo se o indice atual for superior ao indice maximo da array das moedas
+        if (currIndex == n) {
+            break;
+        }
+
+        // coloca os candidatos a 0 até ao indice atual
+        for ( int i = 0; i < currIndex; i++) {
+            currCand[i] = 0;
+        }
+
+        //atualiza o número de moedas usadas do indice atual
+        currCand[currIndex]++;
+
+    }
+
+
+    return foundSol;
 }
 
+
+
+
 bool changeMakingGR(unsigned int C[], unsigned int Stock[], unsigned int n, unsigned int T, unsigned int usedCoins[]) {
-    // TODO
+
+    unsigned int totalVal = 0;
+    unsigned int minCoins = INT_MAX;
+    unsigned int currItem = n-1;
+
+    unsigned int currCand[50];
+
+
+
+    while(totalVal < T) {
+
+    }
+
+
     return true;
 }
 
