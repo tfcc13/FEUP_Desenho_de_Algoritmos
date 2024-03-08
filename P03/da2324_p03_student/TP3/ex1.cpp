@@ -2,10 +2,43 @@
 // Updated by DA 2023/2024 Team
 
 #include "../data_structures/Graph.h"
+#include <queue>
 
 template <class T>
 void edmondsKarp(Graph<T> *g, int source, int target) {
     // TODO
+
+    // encontra vértice fonte
+    Vertex<T> *srcVert = g->findVertex(source);
+
+
+    // encontra vértice destino
+    Vertex<T> *destVert = g->findVertex(target);
+
+    // se os vértices forem iguais ou não existirem termina
+    if (srcVert == destVert || srcVert == nullptr || destVert == nullptr) {
+        printf("Those vertices don't exist or they are the same");
+        return;
+    }
+
+    for (auto v: g->getVertexSet()) {
+        auto w = v->getAdj();
+        for (auto e: w) {
+            e->setFlow(0);
+        }
+    }
+
+    while(findAugmentingPath(g,srcVert,destVert)) {
+        double flow = findMinResInPath(srcVert,destVert);
+        augmentFlowAlongPath(srcVert,destVert,flow);
+
+    }
+
+    // encontrar as capacidades mínimas das arestas
+
+
+
+
 
     //inicialmente coloca-se as aresta com o flow a  0
     // a cada passa usar uma bfs para encontrar o menor caminho de s até t
@@ -17,21 +50,22 @@ void edmondsKarp(Graph<T> *g, int source, int target) {
     // Vê-se quais caminhos se pode tomar  a seguir
     // Quando não existe mais caminhos possíveis atingiu-se o fluxo máximo
 
-
+    /*
     auto s = g->findVertex(source);
     auto t = g->findVertex(target);
 
-    if(!s || !t || s == t) {
-        return ;
+    if (!s || !t || s == t) {
+        return;
     }
 
-    for(auto v : g->getVertexSet()) {
-        for(auto e : v->getAdj()) {
+    for (auto v: g->getVertexSet()) {
+        for (auto e: v->getAdj()) {
             e->setFlow(0);
         }
     }
+*/
 
-
+    /*
     while(findAugmentingPath(s,t)) {
        auto f = findMinResidualAlongPath(s,t);
         amountFlowAlongPath(s,t,f);
@@ -39,6 +73,9 @@ void edmondsKarp(Graph<T> *g, int source, int target) {
     return;
 
 }
+*/
+
+
 
 /* pseudo cósigo
 int findAugmentingPath(int s, int t) {
@@ -63,6 +100,101 @@ int findAugmentingPath(int s, int t) {
     return
     }
  */
+
+}
+
+template<class T>
+void testAndVisit(std::queue<Vertex<T>*> &q, Edge<T> *e, Vertex<T>* w, double residual) {
+
+    // se não tiver capacidade residual passa a frente e não põe em fila o vértice
+    if(!w->isVisited() && residual > 0) {
+        w->setVisited(true);
+        //põe o e como caminho para atingir o w
+        w->setPath(e);
+        //põe na fila
+        q.push(w);
+    }
+}
+
+template<class T>
+bool findAugmentingPath( Graph<T>* g, Vertex<T>* s, Vertex<T>* t) {
+    for (auto v : g->getVertexSet()) {
+        v->setVisited(false);
+    }
+
+    s->setVisited(true);
+    std::queue<Vertex<T>*> q;
+    q.push(s);
+
+    //BFS
+
+    while(!q.empty() && !t->isVisited()) {
+        auto v = q.front();
+        q.pop();
+
+        //processa edges de saida
+        for (auto e : v->getAdj()) {
+            testAndVisit(q, e,e->getDest(), e->getWeight() - e->getFlow());
+        }
+
+        // processa incoming Edges
+        for(auto e : v->getIncoming()) {
+            testAndVisit(q, e, e->getOrig(), e->getFlow());
+        }
+    }
+
+    //retorna verdadeiro se for encontrado caminho ate t
+    return t->isVisited();
+}
+
+
+template<class T>
+double findMinResInPath(Vertex<T>* s, Vertex<T>* t) {
+    double flow = INF;
+
+
+    // percorre os vértices até se chegar ao vértice source, anda-se para trás
+    for(auto v = t; v != s;) {
+        auto p = v->getPath();
+        //para cada caminho verifica-se se a aresta tem como destino o  path
+        // (verifica os vertices que estão no path
+        if(p->getDest()==v) {
+            //verifica e compara o flow minimo com a capacidade restante do vértice em análise
+            flow = std::min(flow, p->getWeight() - p->getFlow());
+            v = p->getOrig();
+        }
+
+        //se o vértice não estiver no caminho  vemos outro vértice no caminho
+        else {
+            // compara o flow minimo com o flow do vértice atual
+            flow = std::min(flow, p->getFlow());
+            // muda para outro vértice
+            v = p->getDest();
+
+        }
+
+        return flow;
+    }
+
+
+}
+
+template<class T>
+void augmentFlowAlongPath(Vertex<T>* s, Vertex<T>* t, double flow) {
+    for (auto v = t; v != s;) {
+        auto e = v->getPath();
+        double currFlow = e->getFlow();
+
+        if(e->getDest() == v) {
+            e->setFlow(flow+currFlow);
+            v= e->getOrig();
+        }
+        else  {
+            e->setFlow(currFlow-flow);
+            v= e->getDest();
+        }
+    }
+}
 
 /// TESTS ///
 #include <gtest/gtest.h>

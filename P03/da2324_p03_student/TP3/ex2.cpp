@@ -3,11 +3,60 @@
 
 #include "../data_structures/Graph.h"
 #include "MSTTestAux.h"
+#include <queue>
+
+
 
 template <class T>
 std::vector<Vertex<T> *> prim(Graph<T> * g) {
     // TODO
+
+    if (g->getVertexSet().empty()) {
+        return g->getVertexSet();
+    }
+
+    for (auto v : g->getVertexSet()) {
+        v->setDist(INF);
+        v->setPath(nullptr);
+        v->setVisited(false);
+    }
+
+    Vertex<T>* s = g->getVertexSet().front();
+    s->setDist(0);
+
+    priority_queue<Vertex<T>*,> priorQueue;
+
+    priorQueue.push(s);
+
+    while(!priorQueue.empty()) {
+        Vertex<T>* v = priorQueue.top();
+    }
+
     return g->getVertexSet();
+
+    /* PESUDO CODIGO
+     *
+     * while (!q.empty())
+     *      v = q.extractMin();
+     *      v->setVisited(true)
+     *      for(auto & e: v->getAdj() {
+     *          w = e->getDest();
+     *          if(!w->isVisited()) {
+     *              oldDist = w->getDist
+     *              if(e->getWeight() < oldDist) {
+     *                  w->setDist(e->getWeight())
+     *                  w->setPath(e)
+     *                  if(oldDist == INF) {
+     *                      q.push(w);
+     *                  }
+     *                  else {
+     *                      q.decreaseKey();
+     *                  }
+     *              }
+     *          }
+     *      }
+     *  return g->getVertexSet();
+     */
 }
 
 /// TESTS ///
