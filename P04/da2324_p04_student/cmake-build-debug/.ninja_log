@@ -1,0 +1,15 @@
+# ninja log v5
+21	1165	7351625638996556	lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	d417d85ae5492596
+1	1245	7351625639784450	CMakeFiles/da2324_p04_sol.dir/TP4/ex1.cpp.obj	794f2880650839f2
+7	1296	7351625640283094	CMakeFiles/da2324_p04_sol.dir/TP4/ex2.cpp.obj	f1fe949f6883b930
+13	1430	7351625641589617	CMakeFiles/da2324_p04_sol.dir/running_examples/closest_point_pair/ClosestPointPair.cpp.obj	b628140242c9fa16
+17	10948	7351625736637331	lib/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	3db0e7df6f66e8d3
+10953	11103	7351625738380558	lib/libgtest.a	657f2dc567104fb7
+11104	11178	7351625739128540	lib/libgtest_main.a	9b39ea1d3a440bea
+11178	11475	7351625742041991	da2324_p04_sol.exe	c98ad7f25f7ec1e3
+5	975	7351625875048553	CMakeFiles/da2324_p04_sol.dir/TP4/ex1.cpp.obj	794f2880650839f2
+976	1187	7351625877103132	da2324_p04_sol.exe	c98ad7f25f7ec1e3
+5	1030	7351626553013466	CMakeFiles/da2324_p04_sol.dir/TP4/ex2.cpp.obj	f1fe949f6883b930
+1031	1300	7351626555638326	da2324_p04_sol.exe	c98ad7f25f7ec1e3
+5	1045	7351626882194164	CMakeFiles/da2324_p04_sol.dir/TP4/ex2.cpp.obj	f1fe949f6883b930
+1045	1268	7351626884358375	da2324_p04_sol.exe	c98ad7f25f7ec1e3

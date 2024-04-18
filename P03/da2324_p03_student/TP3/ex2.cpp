@@ -24,7 +24,7 @@ std::vector<Vertex<T> *> prim(Graph<T> * g) {
     Vertex<T>* s = g->getVertexSet().front();
     s->setDist(0);
 
-    priority_queue<Vertex<T>*,> priorQueue;
+    priority_queue<Vertex<T>*> priorQueue;
 
     priorQueue.push(s);
 
