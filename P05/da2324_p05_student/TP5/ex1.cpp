@@ -2,8 +2,8 @@
 #include <iostream>
 
 bool changeMakingDP(unsigned int C[], unsigned int Stock[], unsigned int n, unsigned int T, unsigned int usedCoins[]) {
-    int min_coins_table[10][11][1001]; //1col -> moedas, 2col-> moedas 3col -> troco
-    int last_coin_table[10][11][1001];
+    unsigned int min_coins_table[10][11][1001]; //1col -> moedas, 2col-> moedas 3col -> troco
+    unsigned int last_coin_table[10][11][1001];
     unsigned int MAX_N_COINS = T+1; // valor auxiliar >  T
 
     // caso nao seja necessário dar troco
@@ -74,15 +74,15 @@ bool changeMakingDP(unsigned int C[], unsigned int Stock[], unsigned int n, unsi
 
     unsigned  int remainingT = T;
 
-    unsigned int curInd = n-1;
-    unsigned int StockInd = Stock[n-1];
+    int curInd = n-1;
+    int curStock = Stock[curInd];
 
     while (remainingT > 0) {
-        int next = last_coin_table[curInd][StockInd][remainingT];
+        int next = last_coin_table[curInd][curStock][remainingT];
         usedCoins[next]++;
-        remainingT = C[next];
+        remainingT -= C[next];
         curInd = next;
-        StockInd = Stock[curInd]-usedCoins[curInd];
+        curStock= Stock[curInd]-usedCoins[curInd];
     }
 
     return true;
