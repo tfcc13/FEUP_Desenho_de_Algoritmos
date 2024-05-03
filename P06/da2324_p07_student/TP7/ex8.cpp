@@ -3,10 +3,52 @@
 #include "exercises.h"
 #include <limits>
 
-unsigned int tspBT(const unsigned int **dists, unsigned int n, unsigned int path[]) {
-    //TODO
-    return 0;
+void tspRec(const unsigned int **dists, unsigned int n, unsigned int curI, unsigned int curDist, unsigned int curPath[], unsigned int &minDist, unsigned int path[]) {
+    if(curI==n) {
+        curDist += dists[curPath[n-1]][curPath[0]];
+        if(curDist< minDist) {
+            minDist = curDist;
+            for(unsigned int i = 0; i< n; i++) {
+                path[i] = curPath[i];
+            }
+        }
+        return;
+    }
+    for(unsigned int i = 1; i<n; i++) {
+        if(curDist+dists[curPath[curI-1]][i] < minDist) {
+            bool isNewNode = true;
+            for(unsigned int j = 1; j < curI; j++) {
+                if(curPath[j]==i) {
+                    isNewNode = false;
+                    break;
+                }
+            }
+            if(isNewNode){
+                curPath[curI] = i;
+                tspRec(dists,n,curI+1,curDist+dists[curPath[curI-1]][curPath[curI]],curPath,minDist,path);
+            }
+        }
+
+    }
+
 }
+
+unsigned int tspBT(const unsigned int **dists, unsigned int n, unsigned int path[]) {
+
+    unsigned int curPath[10000];
+
+    unsigned int minDist =  0;
+
+    curPath[0] = 0;
+
+    tspRec(dists, n,1,0,curPath,minDist,path);
+
+    return minDist;
+
+}
+
+
+
 
 /// TESTS ///
 #include <gtest/gtest.h>
