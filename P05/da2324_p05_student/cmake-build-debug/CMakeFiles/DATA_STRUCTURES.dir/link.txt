@@ -1,0 +1,2 @@
+C:\Users\tiago\AppData\Local\Programs\CLion\bin\mingw\bin\ar.exe qc libDATA_STRUCTURES.a CMakeFiles/DATA_STRUCTURES.dir/data_structures/Heap.cpp.obj CMakeFiles/DATA_STRUCTURES.dir/data_structures/UFDS.cpp.obj
+C:\Users\tiago\AppData\Local\Programs\CLion\bin\mingw\bin\ranlib.exe libDATA_STRUCTURES.a

@@ -3,37 +3,37 @@
 cmake_policy(SET CMP0009 NEW)
 
 # TP5_FILES at CMakeLists.txt:14 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/TP5/*.cpp")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/TP5/*.cpp")
 set(OLD_GLOB
-  "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/TP5/ex1.cpp"
-  "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/TP5/ex2.cpp"
-  "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/TP5/ex3.cpp"
+  "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/TP5/ex1.cpp"
+  "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/TP5/ex2.cpp"
+  "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/TP5/ex3.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/cmake-build-debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/cmake-build-debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # DATA_STRUCTURES_FILES at CMakeLists.txt:13 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/*.cpp")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/*.cpp")
 set(OLD_GLOB
-  "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/Heap.cpp"
-  "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/UFDS.cpp"
+  "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/Heap.cpp"
+  "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/UFDS.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/cmake-build-debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/cmake-build-debug/CMakeFiles/cmake.verify_globs")
 endif()
 
 # DATA_STRUCTURES_FILES at CMakeLists.txt:13 (file)
-file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/*.h")
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/*.h")
 set(OLD_GLOB
-  "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/Graph.h"
-  "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/Heap.h"
-  "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/MutablePriorityQueue.h"
-  "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/UFDS.h"
+  "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/Graph.h"
+  "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/Heap.h"
+  "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/MutablePriorityQueue.h"
+  "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/data_structures/UFDS.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "C:/Users/tiago/Desktop/FEUP/Licenciatura/2Ano/2Semestre/FEUP_Desenho_de_Algoritmos/P05/da2324_p05_student/cmake-build-debug/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "C:/Users/tiago/Desktop/FEUP/2Ano/2Semestre/Desenho_de_Algoritmos/P05/da2324_p05_student/cmake-build-debug/CMakeFiles/cmake.verify_globs")
 endif()
